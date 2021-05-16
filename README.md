@@ -1,6 +1,7 @@
 # Machine Learning Model Deployment with FastAPI
 
 This is my first time using FastAPI, it is fun to learn something new.
+
 See documentation: https://fastapi.tiangolo.com/
 
 Git repo: https://github.com/tiangolo/fastapi
@@ -11,19 +12,20 @@ Then the chosen RandomForest Classifier is deployed with FastAPI to make predict
 
 Prerequisites
 ---------
-To setup the virtual environment with Anaconda 
+To setup the virtual environment with Anaconda:
+
 (The commands below have been tested with conda version both 4.7.10 and 4.9.2.)
 
 ```
 conda create -n py38 python=3.8 anaconda
 ```
-Note that `py38` is self-defined environment name.
+Please note that `py38` is self-defined environment name.
 
-To activate the virtual environment
+To activate the virtual environment:
 ```
 conda activate py38
 ```
-Please note that all the required dependencies can be found in the `requirments.txt` under `src` folder
+Please note that all the required dependencies can be found in the `requirments.txt` under `src` folder.
 
 Sample Request
 ---------
@@ -37,12 +39,12 @@ If you see the last line of the results is:
 ```
 Application startup complete
 ```
-Copy `http://127.0.0.1:8000/` to a web browser (e.g: Google Chrome), you'll see a default `root` page with a pre-defined message:
+Then copy `http://127.0.0.1:8000/` to a web browser (e.g: Google Chrome), you'll see a default `root` page with a pre-defined message:
 ```
 ["This is a test endpoint."]
 ```
 
-Then adds `/docs` at the end of `http://127.0.0.1:8000/`, the Swagger page will show up, which provides an interactive page to make model predictions.
+Next step adds `/docs` at the end of `http://127.0.0.1:8000/`, the Swagger page will show up, which provides an interactive page to make model predictions.
 
 The RandomForest Classifier is trained to classify if the patient died during the follow-up period (0 - Survival / 1 - dead).
 Pass a testing JSON payload:
@@ -89,9 +91,8 @@ infrastructure with many benefits, it is scalable and robust, also it can be cos
 that might not have over millions of requests.
 2. We can also use AWS StepFunction to orchestrate different stages: 
 
-- Data preprocessing(depends on where our data comes from, we can upload them to S3 bucket, use Lambda to pre-process them)
+- Data preprocessing (depends on where our data comes from, we can upload them to S3 bucket, then use Lambda to pre-process them)
 - The clean data will also be stored in S3, then fed into the machine learning model which is hosted on AWS SageMaker, 
-we can either use 'batch transform jobs' (for processing large batch data) or 'endpoint'(for processing realtime data) to get the predictions,
-(the model itself can either be trained on SageMaker or we can use a pre-trained model.) 
+we can either use 'batch transform jobs' (for processing large batch data) or 'endpoint'(for processing realtime data) to get the predictions, the model itself can either be trained on SageMaker or we can use a pre-trained model.
 
-The two stages above can be linked via StepFunction, which also provides a serverless infrastructure, and with error handling, retry logic etc.
+The two stages above can be linked via StepFunction, which also provides a serverless infrastructure, and with error handling, retry logic, etc.
