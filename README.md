@@ -83,8 +83,7 @@ curl -X 'POST' \   'http://127.0.0.1:8000/predict' \   -H 'accept: application/j
 
 Future Work
 ---------
-Due to the time constraints and since this is the very first time I am using FastAPI, I had to spend some time to understand how FastAPI works,
-the functionality for this end-to-end deployment is not complete yet, there are a few more directions to explore, here are some thoughts:
+The functionality for this end-to-end deployment is not complete yet, there are a few more directions to explore, here are some thoughts:
 
 1. Package the scripts and host it on AWS Lambda with API Gateway integration, we can have a completely serverless API
 infrastructure with many benefits, it is scalable and robust, also it can be cost-effective if it is for smaller APIs 
